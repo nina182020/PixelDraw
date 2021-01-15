@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Pixel 5000</title>
+    <meta charset="UTF-8"/>
+</head>
+<body>
+
+
+    <style>
+        body{
+            background-color: rgb(197, 215, 221);
+        }
+        header{
+            background-color: rgb(196, 163, 211);
+            text-align: center;
+            font-size: 28px;
+            padding: 10px;
+            margin: 20px;
+        } 
+        .canvas{
+            position: absolute;
+            top: -30px;
+            left: 20px;
+            padding: 4px;
+            border-radius: 8px;
+            width: 150px;
+            background-color: rgb(196, 163, 211);  
+            font-size: 18px; 
+        }
+        #canvasSize{
+            position: absolute;
+            width: 40px;
+            left: 100px;
+            border-radius: 10px;
+        }
+        #enter{
+            position: absolute;
+            right: -50px;
+        }
+        #reset{
+            position: absolute;
+            top: -25px;
+            right: 20px;
+            font-size: 14px;
+        }
+        .grid{
+            display: grid;
+            grid-template-columns: repeat(16, 1fr);
+            grid-template-rows: repeat(16, 30px);
+            max-width: 600px;
+            
+        }
+        #container{
+            position: relative;
+            margin: 60px auto 30px auto;
+            background-color: rgb(196, 253, 253);
+            border-radius: 5%;
+        }
+        .pixel{
+        background-color: rgb(236, 152, 152);
+        border-radius: 10%;
+        } 
+        button:hover{
+            box-shadow: 0px 0px 15px aliceblue;
+        }
+        input:hover{
+            box-shadow: 0px 0px 15px aliceblue;
+        }
+        .funBtn{
+        position: relative;
+        float: right;
+        margin-right: 20px;
+        bottom: 20px;
+        font-size: 14px;
+        width: 50px;
+        height: 30px;
+        box-shadow: 5px 5px 10px orange, 20px 20px 10px rgb(255, 166, 166);
+        } 
+    </style>
+
+
+    <header><b>Pixel Draw</b></header>
+    <div class="grid" id="container"> 
+        <div class="canvas">
+            <form>
+                <label>Canvas size:</label>
+                <input type="text" id="canvasSize"/>
+                <button type="button" id="enter" onclick="getInputValue();">Enter</button>
+            </form>
+        </div>
+        <button id="reset" onClick="window.location.reload();">reset</button>
+        <div class="pixel" id="test"></div>
+    </div>
+    <button class="funBtn" id="btn1">?</button>
+    
+
+    <script> 
+        window.addEventListener("mouseover", function(){
+            let pixels = document.querySelectorAll(".pixel");
+
+            Array.from(pixels, function(pixel){
+                pixel.addEventListener("mousedown", function(){
+                    this.style.backgroundColor = 'black';
+                });
+            });
+        });
+        function createDiv(){
+            var newDiv = document.createElement("div");
+            container.appendChild(newDiv);
+            newDiv.classList.add('pixel');
+        }  
+        
+        function blankCanvas() {
+            var ii = 0;
+            while (ii<256){
+            ii++;
+            createDiv();
+            }
+        }
+        function getInputValue(){
+            var inputValue = document.getElementById("canvasSize").value;
+            let i = 0;
+            while (i < inputValue){
+                i++;
+                createDiv();    
+            }
+        }
+        var button = document.getElementById("btn1").addEventListener('click', function(e){
+            document.getElementById("btn1").innerHTML = "HI!";
+            document.getElementById("btn1").style.boxShadow = '0px 0px';
+        })
+    </script> 
+</body>
+</html>
