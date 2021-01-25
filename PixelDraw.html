@@ -8,74 +8,78 @@
 
 
     <style>
-        body{
-            background-color: rgb(197, 215, 221);
+        body {
+            background-color: #305f72;
         }
-        header{
+        header {
+            margin: 20px;
+            padding: 10px;
             background-color: rgb(196, 163, 211);
             text-align: center;
             font-size: 28px;
-            padding: 10px;
-            margin: 20px;
         } 
-        .canvas{
+        .canvas {
             position: absolute;
-            top: -30px;
+            top: -40px;
             left: 20px;
-            padding: 4px;
-            border-radius: 8px;
             width: 150px;
-            background-color: rgb(196, 163, 211);  
+            padding: 4px;
+            background-color: rgb(196, 163, 211);
+            border-radius: 8px;  
             font-size: 18px; 
         }
-        #canvasSize{
+        #canvasSize {
             position: absolute;
-            width: 40px;
             left: 100px;
+            width: 40px;
             border-radius: 10px;
         }
-        #enter{
+        #enter {
             position: absolute;
             right: -50px;
         }
-        #reset{
+        #pickColor {
             position: absolute;
-            top: -25px;
+            top: 0px;
+            right: -105px;
+        }
+        #reset {
+            position: absolute;
+            top: -35px;
             right: 20px;
             font-size: 14px;
         }
-        .grid{
+        .grid {
             display: grid;
             grid-template-columns: repeat(16, 1fr);
             grid-template-rows: repeat(16, 30px);
             max-width: 600px;
             
         }
-        #container{
+        #container {
             position: relative;
             margin: 60px auto 30px auto;
-            background-color: rgb(196, 253, 253);
-            border-radius: 5%;
+            background-color:  #568ea6;
+            border-radius: 8px;
         }
-        .pixel{
-        background-color: rgb(236, 152, 152);
-        border-radius: 10%;
+        .pixel {
+            background-color: #d4d8ec48;
         } 
-        button:hover{
+        button:hover {
             box-shadow: 0px 0px 15px aliceblue;
         }
-        input:hover{
+        input:hover {
             box-shadow: 0px 0px 15px aliceblue;
         }
-        .funBtn{
-        position: relative;
-        float: right;
-        margin-right: 20px;
-        bottom: 20px;
-        font-size: 14px;
-        width: 50px;
-        height: 30px;
-        box-shadow: 5px 5px 10px orange, 20px 20px 10px rgb(255, 166, 166);
+        .funBtn {
+            position: relative;
+            float: right;
+            margin-right: 20px;
+            bottom: 20px;
+            width: 50px;
+            height: 30px;
+            box-shadow: 5px 5px 10px orange, 20px 20px 10px rgb(255, 166, 166);
+            font-size: 14px;
         } 
     </style>
 
@@ -85,8 +89,9 @@
         <div class="canvas">
             <form>
                 <label>Canvas size:</label>
-                <input type="text" id="canvasSize"/>
+                <input type="text" id="canvasSize">
                 <button type="button" id="enter" onclick="getInputValue();">Enter</button>
+                <input type="color" id="pickColor">
             </form>
         </div>
         <button id="reset" onClick="window.location.reload();">reset</button>
@@ -98,15 +103,15 @@
     <script> 
         window.addEventListener("mouseover", function(){
             let pixels = document.querySelectorAll(".pixel");
-
             Array.from(pixels, function(pixel){
                 pixel.addEventListener("mousedown", function(){
-                    this.style.backgroundColor = 'black';
+                    let color = document.getElementById("pickColor").value;
+                    this.style.backgroundColor = color;
                 });
             });
         });
         function createDiv(){
-            var newDiv = document.createElement("div");
+            const newDiv = document.createElement("div");
             container.appendChild(newDiv);
             newDiv.classList.add('pixel');
         }  
@@ -119,7 +124,7 @@
             }
         }
         function getInputValue(){
-            var inputValue = document.getElementById("canvasSize").value;
+            let inputValue = document.getElementById("canvasSize").value;
             let i = 0;
             while (i < inputValue){
                 i++;
