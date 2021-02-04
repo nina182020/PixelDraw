@@ -1,0 +1,73 @@
+body {
+    background-color: #305f72;
+}
+header {
+    margin: 20px;
+    padding: 10px;
+    background-color: rgb(196, 163, 211);
+    text-align: center;
+    font-size: 28px;
+} 
+#inputBar {
+    position: absolute;
+    top: -40px;
+    left: 20px;
+    width: 150px;
+    padding: 4px;
+    background-color: rgb(196, 163, 211);
+    border-radius: 8px;  
+    font-size: 18px; 
+}
+#canvasSize {
+    position: absolute;
+    left: 100px;
+    width: 40px;
+    border-radius: 10px;
+}
+#enterBtn {
+    position: absolute;
+    right: -50px;
+}
+#pickColor {
+    position: absolute;
+    top: 0px;
+    right: -125px;
+}
+#resetBtn {
+    position: absolute;
+    top: -35px;
+    right: 20px;
+    font-size: 14px;
+}
+.grid {
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    grid-template-rows: repeat(16, 30px);
+    max-width: 600px;
+    
+}
+#container {
+    position: relative;
+    margin: 60px auto 30px auto;
+    background-color:  #568ea6;
+    border-radius: 8px;
+}
+.pixel {
+    background-color: #d4d8ec48;
+} 
+button:hover {
+    box-shadow: 0px 0px 10px aliceblue;
+}
+input:hover {
+    box-shadow: 0px 0px 10px aliceblue;
+}
+#funBtn {
+    position: relative;
+    float: right;
+    margin-right: 20px;
+    bottom: 20px;
+    width: 50px;
+    height: 30px;
+    box-shadow: 5px 5px 10px orange, 20px 20px 10px rgb(255, 166, 166);
+    font-size: 14px;
+} 
