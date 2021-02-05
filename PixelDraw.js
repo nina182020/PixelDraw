@@ -21,11 +21,15 @@ function colorPixel() {
 
 let canvasSize = document.getElementById("canvasSize");
 function createCanvas() {
-    changeCanvas(canvasSize.value);
-    let i = 0;
-    while (i < canvasSize.value * canvasSize.value) {
-        i++;
-        createDiv();    
+    if (canvasSize.value > 100) {
+        alert("Error, canvas size is too big. Pick a smaller number.");
+    } else {
+        changeCanvas(canvasSize.value);
+        let i = 0;
+        while (i < canvasSize.value * canvasSize.value && i < 10000) {
+            i++;
+            createDiv();    
+        };
     };
 };
 function changeCanvas(value) {
