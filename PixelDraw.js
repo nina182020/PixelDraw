@@ -7,8 +7,8 @@ const defaultCanvas = (() => {
     };
 })();
 
-document.addEventListener("mouseover", findPixel);
-function findPixel() {
+document.addEventListener("mouseover", getPixel);
+function getPixel() {
     let pixel = document.querySelectorAll(".pixel");
     Array.from(pixel, pixel => {
         pixel.addEventListener("mousedown", colorPixel);
