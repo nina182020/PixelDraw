@@ -1,34 +1,42 @@
-const startingCanvas = (() => {
+const container = document.getElementById("container");
+const defaultCanvas = (() => {
     let i = 0;
-    while (i<256){
-    i++;
-    createDiv();
+    while (i < 256) {
+        i++;
+        createDiv();
     };
 })();
 
-window.addEventListener("mouseover", function() {
-    let pixels = document.querySelectorAll(".pixel");
-    Array.from(pixels, function(pixel) {
-        pixel.addEventListener("mousedown", function() {
-            let color = document.getElementById("pickColor").value;
-            this.style.backgroundColor = color;
-        });
+document.addEventListener("mouseover", findPixel);
+function findPixel() {
+    let pixel = document.querySelectorAll(".pixel");
+    Array.from(pixel, pixel => {
+        pixel.addEventListener("mousedown", colorPixel);
     });
-});
+};
+let color = document.getElementById("pickColor");
+function colorPixel() {
+    this.style.backgroundColor = color.value;
+};
+
+let canvasSize = document.getElementById("canvasSize");
+function createCanvas() {
+    changeCanvas(canvasSize.value);
+    let i = 0;
+    while (i < canvasSize.value * canvasSize.value) {
+        i++;
+        createDiv();    
+    };
+};
+function changeCanvas(value) {
+    container.style.setProperty('--gridColumns', value);
+    container.style.setProperty('--gridRows', value);
+};
 
 function createDiv() {
     const newDiv = document.createElement("div");
     container.appendChild(newDiv);
     newDiv.classList.add('pixel');
-};  
-
-function getInputValue() {
-    let inputValue = document.getElementById("canvasSize").value;
-    let i = 0;
-    while (i < inputValue) {
-        i++;
-        createDiv();    
-    };
 };
 
 function reset() {
@@ -36,7 +44,7 @@ function reset() {
 };
 
 let funBtn = document.getElementById("funBtn");
-funBtn.addEventListener('click', function(e) { 
+funBtn.addEventListener("click", () => { 
     funBtn.innerHTML = "HI!";
-    funBtn.style.boxShadow = 'none';
+    funBtn.style.boxShadow = "none";
 });

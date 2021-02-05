@@ -9,17 +9,16 @@
 <body>
 
     <header><b>Pixel Draw</b></header>
-    <div class="grid" id="container"> 
+    <div id="container"> 
         <div id="inputBar">
             <form>
                 <label>Canvas size:</label>
-                <input type="text" id="canvasSize">
-                <button type="button" id="enterBtn" onclick="getInputValue();">Enter</button>
+                <input type="number" min="0" max="2000" id="canvasSize">
+                <button type="button" id="enterBtn" onclick="createCanvas();">Enter</button>
                 <input type="color" id="pickColor">
             </form>
         </div>
         <button id="resetBtn" onclick="reset()">Reset</button>
-        <div class="pixel" id="test"></div>
     </div>
     <button id="funBtn">?</button>
     
